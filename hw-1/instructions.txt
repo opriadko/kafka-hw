@@ -1,0 +1,11 @@
+1. Запускаем кафрку в докере, используя docker-compose.yaml:
+    docker compose up -d
+
+2.Создаем топик test
+    docker exec -ti kafka /usr/bin/kafka-topics --create --topic test --bootstrap-server localhost:9093
+
+3. Добавляем сообщение в топик
+    docker exec -ti kafka /usr/bin/kafka-console-producer --topic test --bootstrap-server kafka:9093
+
+4. Получаем сообщение из топика
+    docker exec -ti kafka /usr/bin/kafka-console-consumer --from-beginning --topic test --bootstrap-server localhost:9093
